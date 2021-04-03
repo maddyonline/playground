@@ -1,6 +1,7 @@
 import React from "react";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import store from "store2";
+import "./App.css";
 
 function App() {
   const [code, setCode] = React.useState("<strong>Hello World!</strong>");
@@ -11,15 +12,22 @@ function App() {
     <div style={{ display: "flex" }}>
       <div>
         <LiveProvider code={code}>
-          <LiveEditor
-            value={code}
-            onValueChange={(code) => setCode(code)}
-            padding={10}
-            style={{
-              fontFamily: '"Fira code", "Fira Mono", monospace',
-              fontSize: 12,
-            }}
-          />
+          <main className="container">
+            <div className="container__content">
+              <div className="container_editor_area">
+                <LiveEditor
+                  className="container__editor"
+                  value={code}
+                  onValueChange={(code) => setCode(code)}
+                  padding={10}
+                  style={{
+                    fontFamily: '"Fira code", "Fira Mono", monospace',
+                    fontSize: 12,
+                  }}
+                />
+              </div>
+            </div>
+          </main>
           <LiveError />
           <LivePreview />
         </LiveProvider>
